@@ -1,0 +1,195 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.0em}
+\setlength{\headheight}{38pt}
+\allowdisplaybreaks
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\def\quad{\hskip1em\relax}
+\def\qquad{\hskip2em\relax}
+
+\rhead{Stochastic Methods Lab \\[10pt] Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\[10pt]
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{\texttt{Homework 10 Problem 2}} \vspace*{0.8mm}  
+	\end{center}
+    We are given:
+    \begin{align*}
+      &\begin{pmatrix}
+        b_1 & c_1 & 0 & \cdots & 0 \\
+        a_2 & b_2 & c_2 &  & \vdots \\
+        0 & a_3 & b_3 & \ddots & 0 & \\
+        \vdots &  & \ddots & \ddots & c_{n-1} \\ 
+        0 & \cdots & 0 & a_n & b_n
+      \end{pmatrix}
+      \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+        d_1 \\ d_2 \\ d_3 \\ \vdots \\ d_n 
+      \end{pmatrix} \\
+    \end{align*}
+    Now,
+    \begin{align*}
+      &\begin{pmatrix}
+          1 & \frac{c_1}{b_1} & 0 & \cdots & 0 \\
+        a_2 & b_2 & c_2 & & \vdots \\
+        0 & a_3 & b_3 & \ddots & 0 & \\
+        \vdots & & \ddots & \ddots & c_{n-1} \\ 
+        0 & \cdots & 0 & a_n & b_n
+      \end{pmatrix}
+      \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+          \frac{d_1}{b_1} \\ d_2 \\ d_3 \\ \vdots \\ d_n 
+      \end{pmatrix} \\[10pt]
+      &=\begin{pmatrix}
+          1 & \frac{c_1}{b_1} & 0 & \cdots & 0 \\
+          0 & b_2 - a_2\frac{c_1}{b_1} & c_2 & & \vdots \\
+        0 & a_3 & b_3 & \ddots & 0 & \\
+        \vdots & & \ddots & \ddots & c_{n-1} \\ 
+        0 & \cdots & 0 & a_n & b_n
+      \end{pmatrix}
+      \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+          \frac{d_1}{b_1} \\ d_2 - a_2\frac{d_1}{b_1} \\ d_3 \\ \vdots \\ d_n 
+      \end{pmatrix} \\[10pt]
+      &=\begin{pmatrix}
+        1 & \frac{c_1}{b_1} & 0 & \cdots & 0 \\
+        0 & 1 & \frac{c_2}{b_2 - a_2\frac{c_1}{b_1}} & & \vdots \\
+       0 & a_3 & b_3 & \ddots & 0 & \\
+      \vdots & & \ddots & \ddots & c_{n-1} \\ 
+      0 & \cdots & 0 & a_n & b_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        \frac{d_1}{b_1} \\ \frac{d_2 - a_2\frac{d_1}{b_1}}{b_2 - a_2\frac{c_1}{b_1}} \\ d_3 \\ \vdots \\ d_n 
+    \end{pmatrix} \\[10pt]
+  &=\begin{pmatrix}
+    1 & \frac{c_1}{b_1} & 0 & \cdots & 0 \\
+    0 & 1 & \frac{c_2}{b_2 - a_2\frac{c_1}{b_1}} & & \vdots \\
+   0 & 0 & b_3 - a_3\frac{c_2}{b_2 - a_2\frac{c_1}{b_1}} & \ddots & 0 & \\
+  \vdots & & \ddots & \ddots & c_{n-1} \\ 
+  0 & \cdots & 0 & a_n & b_n
+\end{pmatrix}
+\begin{pmatrix}
+  x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+\end{pmatrix}
+= 
+\begin{pmatrix}
+    \frac{d_1}{b_1} \\ \frac{d_2 - a_2\frac{d_1}{b_1}}{b_2 - a_2\frac{c_1}{b_1}} \\ d_3 - a_3\frac{d_2 - a_2\frac{d_1}{b_1}}{b_2 - a_2\frac{c_1}{b_1}} \\ \vdots \\ d_n 
+\end{pmatrix} \\[10pt]
+&=\begin{pmatrix}
+  1 & \frac{c_1}{b_1} & 0 & \cdots & 0 \\
+  0 & 1 & \frac{c_2}{b_2 - a_2\frac{c_1}{b_1}} & & \vdots \\
+ 0 & 0 & 1 & \ddots & 0 & \\
+\vdots & & \ddots & \ddots & c_{n-1} \\ 
+0 & \cdots & 0 & a_n & b_n
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+\end{pmatrix}
+= 
+\begin{pmatrix}
+  \frac{d_1}{b_1} \\ \frac{d_2 - a_2\frac{d_1}{b_1}}{b_2 - a_2\frac{c_1}{b_1}} \\ \frac{d_3 - a_3\frac{d_2 - a_2\frac{d_1}{b_1}}{b_2 - a_2\frac{c_1}{b_1}}}{b_3 - a_3\frac{c_2}{b_2 - a_2\frac{c_1}{b_1}}} \\ \vdots \\ d_n 
+\end{pmatrix} \\[10pt]
+    \end{align*}
+    Here $c_3$ becomes $\frac{c_3}{b_3 - a_3\frac{c_2}{b_2 - a_2\frac{c_1}{b_1}}}$. Let changed $c_i$ become $c'_i$, and changed $d_i$ become $d'_i$. Giving,
+    \begin{align*}
+      &=\begin{pmatrix}
+        1 & c'_1 & 0 & \cdots & 0 \\
+        0 & 1 & \frac{c_2}{b_2 - a_2c'_1} & & \vdots \\
+       0 & 0 & 1 & \ddots & 0 & \\
+      \vdots & & \ddots & \ddots & c_{n-1} \\ 
+      0 & \cdots & 0 & a_n & b_n
+      \end{pmatrix}
+      \begin{pmatrix}
+      x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n 
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+        d'_1 \\ \frac{d_2 - a_2d'_1}{b_2 - a_2c'_1} \\ \frac{d_3 - a_3d'_2}{b_3 - a_3c'_2} \\ \vdots \\ d_n 
+      \end{pmatrix} \\[10pt]
+    \end{align*}
+    Here $c_3$ becomes $\frac{c_3}{b_3 - a_3c'_2}$. Continuing we get:
+    \begin{align*}
+      &=\begin{pmatrix}
+        1 & c'_1 & 0 & \cdots & 0 \\
+        0 & 1 & \frac{c_2}{b_2 - a_2c'_1} & & \vdots \\
+       0 & 0 & 1 & \ddots & 0 & \\
+      \vdots & & \ddots & \ddots & \frac{c_{n-1}}{b_{n-1} - a_{n-1}c'_{n-2}} \\ 
+      0 & \cdots & 0 & a_n & b_n
+      \end{pmatrix}
+      \begin{pmatrix}
+      x_1 \\ x_2 \\ x_3 \\ \vdots \\x_{n-1} \\ x_n 
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+        d'_1 \\ \frac{d_2 - a_2d'_1}{b_2 - a_2c'_1} \\ \frac{d_3 - a_3d'_2}{b_3 - a_3c'_2} \\ \vdots \\ \frac{d_{n-1} - a_{n-1}d'_{n-2}}{b_{n-1} - a_{n-1}c'_{n-2}}\\ d_n 
+      \end{pmatrix} \\[10pt]
+    \end{align*}
+    Finally,
+    \begin{align*}
+        &=\begin{pmatrix}
+          1 & c'_1 & 0 & \cdots & 0 \\
+          0 & 1 & \frac{c_2}{b_2 - a_2c'_1} & & \vdots \\
+         0 & 0 & 1 & \ddots & 0 & \\
+        \vdots & & \ddots & \ddots & \frac{c_{n-1}}{b_{n-1} - a_{n-1}c'_{n-2}} \\ 
+        0 & \cdots & 0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ \vdots \\x_{n-1} \\ x_n 
+        \end{pmatrix}
+        = 
+        \begin{pmatrix}
+          d'_1 \\ \frac{d_2 - a_2d'_1}{b_2 - a_2c'_1} \\ \frac{d_3 - a_3d'_2}{b_3 - a_3c'_2} \\ \vdots \\ \frac{d_{n-1} - a_{n-1}d'_{n-2}}{b_{n-1} - a_{n-1}c'_{n-2}}\\ \frac{d_{n} - a_{n}d'_{n-1}}{b_{n} - a_{n}c'_{n-1}} 
+        \end{pmatrix} \\[10pt]
+      \end{align*}
+      So, we have:
+      \begin{align*}
+        c'_i =
+        \begin{cases}
+          \frac{c_i}{b_i} & i = 1, \\
+          \frac{c_i}{b_i - a_ic'_{i-1}} & i = 2,...,n-1
+        \end{cases} & & 
+        d'_i = 
+        \begin{cases}
+          \frac{d_i}{b_i} & i=1, \\
+          \frac{d_i - a_id'_{i-1}}{b_i - a_ic'_{i-1}} & i = 2,...,n
+        \end{cases}
+      \end{align*}
+      Now getting the solutions:
+      \begin{align*}
+        x_n = d'_n & & 
+        x_{n-1} + x_{n}c'_{n-1} &= d'_{n-1} \\
+        & & x_{n-1} &= d'_{n-1} - x_{n}c'_{n-1} \\
+        x_{n-2} + x_{n-1}c'_{n-2} &= d'_{n-2} \\
+        x_{n-2} &=  d'_{n-2} - x_{n-1}c'_{n-2}
+      \end{align*}
+      So clearly for the solutions:
+      \begin{align*}
+        x_i = 
+        \begin{cases}
+          d'_i & i = n, \\
+          d'_i - x_{i+1}c'_{i} & i = n-1,...,1
+        \end{cases}
+      \end{align*}
+    \clearpage
+  \end{document}

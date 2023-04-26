@@ -1,0 +1,118 @@
+Total Points for HW2 : 20
+
+Comments : Good Job.
+
+Problem 1 : 6
+
+Problem 2 : 2
+
+Problem 3 : 2
+
+Problem 4 : 2
+
+Problem 5 : 3
+
+Problem 6 : 3
+
+Problem 7 : 2
+
+Total Points Achieved : 20
+
+
+
+Total Points for HW3 : 20
+
+Comments : Good Job.
+
+Problem 1 : 4
+
+Problem 2 : 7
+
+Problem 3 : 3
+
+Problem 4 : 4
+
+Problem 5 : 2
+
+Total Points Achieved : 20
+<<<<<<< Updated upstream
+
+
+
+Total Points for HW4 : 20
+
+Comments : Good job.
+
+Problem 1 : 2
+
+Problem 2 : 12
+
+Problem 3 : 4
+
+Problem 4 : 2
+
+Total Points Achieved : 20
+
+
+
+Total Points for HW5 : 18
+
+Comments : Nice work.
+
+Problem 1 : 6
+
+Problem 2 : 4
+
+Problem 3 : 4
+
+Problem 4 : 4
+
+Total Points Achieved : 18
+
+
+
+Total Points for HW6 : 20
+
+Comments : Well done.
+
+Problem 1 : 4
+
+Problem 2 : 8
+
+Problem 3 : 4
+
+Problem 4 : 4
+
+Total Points Achieved : 20
+
+
+
+Total Points for HW7 : 20
+
+Comments : Great work.
+
+Problem 1 : 10
+
+Problem 2 : 3
+
+Problem 3 : 4
+
+Problem 4 : 3
+
+Total Points Achieved : 20
+
+
+
+Total Points for HW8 : 20
+
+Comments : Good try.
+
+Problem 1 : 6
+
+Problem 2 : 7
+
+Problem 3 : 6
+
+Total Points Achieved : 19
+=======
+>>>>>>> Stashed changes

@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.0em}
+\setlength{\headheight}{38pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\def\quad{\hskip1em\relax}
+\def\qquad{\hskip2em\relax}
+
+\rhead{Stochastic Methods Lab \\[10pt] Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\[10pt]
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{\texttt{Homework 10 Problem 2}} \vspace*{0.8mm}  
+	\end{center}
+    We are given:
+    \begin{align*}
+      S &= \exp(X) \\
+      V(X,t) &= C(S,t)
+    \end{align*}
+    So,
+    \begin{align*}
+      \frac{\partial S}{\partial X} = S
+    \end{align*}
+    Now,
+    \begin{align*}
+      \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} + rS \frac{\partial C}{\partial S} - rC &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS \frac{\partial V}{\partial S} - rV &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial}{\partial S} \left( \frac{\partial V}{S \partial X} \right) + rS \frac{\partial V}{S \partial X} - rV &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2  \frac{ \frac{\frac{\partial V}{\partial X}}{ \partial S} S - \frac{\partial S}{\partial S} \frac{\partial V }{\partial X}} {S^2} + r \frac{\partial V}{ \partial X} - rV &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2  \frac{ \frac{\frac{\partial V}{\partial X}}{ S \partial X} S - \frac{\partial V }{\partial X}} {S^2} + r\frac{\partial V}{\partial X} - rV &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2  \frac{ \frac{\partial^2 V}{\partial X^2 } - \frac{\partial V }{\partial X}} {S^2} + r \frac{\partial V}{ \partial X} - rV &= 0\\
+      \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 \left( \frac{\partial^2 V}{\partial X^2 } - \frac{\partial V }{\partial X} \right) + r\frac{\partial V}{\partial X} - rV &= 0\\
+    \end{align*}
+    \clearpage
+  \end{document}

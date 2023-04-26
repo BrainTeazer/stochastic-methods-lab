@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.0em}
+\setlength{\headheight}{38pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\def\quad{\hskip1em\relax}
+\def\qquad{\hskip2em\relax}
+
+\rhead{Stochastic Methods Lab \\[10pt] Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\[10pt]
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{\texttt{Homework 9 Problem 1b}} \vspace*{0.8mm}  
+	\end{center}
+    We are given:
+    \begin{align*}
+      dX_t &= \mu(1 - c\ln X_t) X_t dt + \sigma X_t dW_t\\[10pt]
+    \end{align*}
+    Now, for stock price, $S$:
+    \begin{equation}
+        \label{eqn:givenSP}
+      dS = \mu(1 - c\ln S) S dt + \sigma S dW_t\\[10pt]
+    \end{equation}
+
+    \textit{From the slides}: Option price $C$ is a function of $S(t)$ and $t$, i.e., $C = C(S(t), t) = C(x,t) \bigg|_{x=S(t)}$ 
+    From \textbf{Ito's Lemma} we know that if $X(t)$ is a solution to $dX$ and $F(X(t), t)$:
+    \begin{align*}
+      dF = \left[ \frac{\partial F}{\partial t} + f \frac{\partial F}{\partial x} + \frac{1}{2} g^2 \frac{\partial^2 F}{\partial x^2} \right]dt + g \frac{\partial F}{\partial x} dW
+    \end{align*}
+    In our case, $f = \mu (1 - c \ln S) S$, $g= \sigma S $:
+    \begin{align*}
+      dC = \left[ \frac{\partial C}{\partial t} + \mu (1 - c \ln S) \frac{\partial C}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} \right] dt + \sigma S \frac{\partial C}{\partial S} dW
+    \end{align*}
+    Finally, using \textbf{Merton's trick} and \textit{from the slides}: consider a portfolio of value $\pi$ that eliminates risk (i.e. removes randomness):
+    \begin{align*}
+      \pi  &= \alpha C + \beta S \\[10pt]
+      d\pi &= \alpha dC + \beta dS \\[10pt]
+           &= \alpha \left[ \frac{\partial C}{\partial t} + \mu (1 - c \ln S) \frac{\partial C}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} \right] dt + \alpha \sigma S \frac{\partial C}{\partial S} dW \\[10pt]
+           &+ \beta \mu(1 - c\ln S) S dt + \beta \sigma S dW_t 
+    \end{align*}
+    Now, if $\beta = - \alpha \frac{\partial C}{\partial S}$:
+    \begin{align*}
+        d \pi &= \alpha \left[ \frac{\partial C}{\partial t} + \mu (1 - c \ln S) \frac{\partial C}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} \right] dt + \alpha \sigma S \frac{\partial C}{\partial S} dW \\[10pt] &- \alpha \frac{\partial C}{\partial S} \mu(1 - c\ln S) S dt  - \alpha \frac{\partial C}{\partial S} \sigma S dW_t \\[10pt]
+            &= \alpha \left[ \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} \right] dt \\[10pt]
+    \end{align*}
+    Now that there is no more randomness in $d\pi$; $\pi$ must grow with riskless rate, $r$, (i.e. $\pi(t) = \pi(0) e^{rt}$):
+    \begin{align*}
+      d\pi &= \pi r dt \\[10pt]
+           &= \alpha \left(C - \frac{\partial C}{\partial S} S \right) r dt \\[10pt]
+      \alpha \left[ \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} \right] dt &= \alpha \left(C - \frac{\partial C}{\partial S} S \right) r dt \\[10pt]
+      \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} &= \left(C - \frac{\partial C}{\partial S} S \right) r\\[10pt]
+      \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2
+      \frac{\partial^2 C}{\partial S^2} &= rC - rS \frac{\partial C}{\partial S} \\[10pt]
+      %
+      \frac{\partial C}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} + rS \frac{\partial C}{\partial S} &= rC s \\
+    \end{align*}
+    The result is the same as the Black-Scholes(-Merton) equation. This is because the option price is independent of the value of $\mu$ (mean) - it depends on the volatility ($\sigma$). 
+
+    \clearpage
+  \end{document}

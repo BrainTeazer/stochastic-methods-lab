@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+
+\newcommand*{\QEDA}{\null\nobreak\hfill\ensuremath{\square}}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.1em}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rhead{Stochastic Methods Lab \\ Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{\texttt{Homework 7 Problem 4}} \vspace*{0.8mm}  
+	\end{center}
+    \textbf{Theorem:} \textit{It is never optimal to exercise an American call option on a non-dividend-paying stock before expiration.}\\
+
+    \textbf{Proof} 
+    \begin{align*}
+        \textbf{Portfolio A: } & \text{American call option and } Ke^{-r(T-t)} \text{ in cash} \\
+        \textbf{Portfolio B: } & \text{One share}
+    \end{align*}
+    Let, $S_t$ be share price at time $t$. \\
+
+    For \textbf{Portfolio A}: assuming the option is exercised at some time $t < T$ 
+    \begin{align*}
+       \text{value of \textbf{A}} &= ( S_t - K ) + Ke^{-r(T-t)} < S_t \\
+       \text{value of \textbf{B}} &= S_t
+    \end{align*}
+    Now, assuming the option is exercised at $T$
+    \begin{align*}
+       \text{value of \textbf{A}} &= max( S_T - K, 0 ) + K  \\
+                                  &= max(S_T, K) \geq S_T \\
+       \text{value of \textbf{B}} &= S_T
+    \end{align*}
+    So, exercising the option before maturity gives a portfolio with value less than that of \textbf{Portfolio B}. If exercised at time of maturity - the value is greater than or equal to the value of \textbf{Portfolio B}. So in the given case, an American call option should not be exercised early.
+    \QEDA
+
+    \clearpage
+
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm, forest}
+\usepackage[margin=1in]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.0em}
+\setlength{\headheight}{38pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+
+\rhead{Stochastic Methods Lab \\[10pt] Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\[10pt]
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{Final Project Problem 2} 
+	\end{center}
+    \textbf{A-B} Options on Dividend Paying Stocks (Lyuu, Chapter 9.6) \\ 
+
+    Throughout class, we have been discussing methods to calculate options with non-dividend paying stocks. But not all stocks are non-dividend paying - and the methods used for dividend paying stocks are important to realise and understand. A few terms are important to establish before proceeding.
+   
+    Dividend: A payment made to a company's stockholder. \\
+Ex-dividend date: Dates in which stocks owned before it are entitled to the current dividend payout. Stocks bought on or after it is entitled to the next dividend payout. \\
+
+    Dividend yield is defined as the ratio between a the most recent dividend (per share) and the current share price. 
+    So, for a stock $S$, if the dividend yield is $\delta$ the then the stock pays out $S$ every ex-dividend date.
+    In the binomial options pricing model, the stock price goes from $S$ to $Su - Su\delta$ or $Sd - Sd\delta$ (assuming ex-dividend is included in the period). \\
+
+    \textbf{European Options:} only number of ex-dividend dates ($m$) matter. Stock price at expiration is $(1-\delta)^m Su^j d^{n-j}$. As a result, using $(1-\delta)^mS$ instead of $S$ in the binomial tree algorithms (linear time and constant space) is possible.\\
+
+    \textbf{American Options:} it applies backward induction and ex-dividend date is considered individually, and can be modified for puts. Here, early exercise may be optimal.\\
+    
+    \textbf{Options on Stock that Pays Known Dividends:} A constant dividend adds complexity and is prefereable in the short run. 
+    The timing of the dividend becomes important - and the binomial tree becomes diffcult to extend. For example, $(Su-D)u$ is different from $Suu-D$.
+    In fact, $m$ ex-dividend dates creates $2^m$ nodes clearly hindering time and space complexity.\\ 
+    
+
+There are measures to adjust for dividends. If it is assumed that a stock can be divided into a riskless dividend paying and risky non-dividend paying part, Black Scholes is applicable.
+Black Scholes utilizes the the risky part, and can be used as two adjacent ex-dividend dates follows the same lognormal distribution or path. However, to be able to properly use it the stock price needs to be reduced by the present value of future dividends.
+
+Doing this adjustment for current stock price allows us to make a binomial tree, where the new stock price does not have any dividends. Afterwards, the PV value of future dividends is added to each node/stock price of the tree. This allows European and American options to be computed as normal. For American options, at each node early exercise tests need to be done. 
+\\
+
+    \textbf{Continuous Dividend Yield:} In a broad-based stock market, dividends are payed almost daily by some company. Without dividends, a stock growing from $S$ to $S'$ with a continuous dividend yield, $q$, grows from $S$ to $S'e^{q\tau}$.
+    For a European option, a stock $S$ paying $q$ is equivalent to a stock priced $Se^{-q\tau}$ paying no dividends. As a result Black Scholes holds with the mentioned change.
+
+    \clearpage
+  \end{document}

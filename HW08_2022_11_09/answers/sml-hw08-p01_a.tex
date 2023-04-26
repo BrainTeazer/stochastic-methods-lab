@@ -1,0 +1,69 @@
+\documentclass[fleqn]{article}
+\usepackage{fancyhdr, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+
+
+\newcommand*{\QEDA}{\null\nobreak\hfill\ensuremath{\square}}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.0em}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rhead{Stochastic Methods Lab \\ Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Large{\texttt{Homework 8 Problem 1a}} \vspace*{0.8mm}  
+	\end{center}
+
+    \begin{align*}
+        dX &= f(X,t)dt + g(X,t)dW \\
+        F(X,t) &= (1+t)^2 \cos(X) 
+    \end{align*}
+
+    In the slides, we are given:
+
+    \begin{align*}
+        dF = \left[ \frac{\partial F}{\partial t} + \frac{\partial F}{\partial X} f + \frac{1}{2} \frac{\partial ^2 F}{\partial X^2} g^2 \right]dt + g \frac{\partial F}{\partial X} dW \\
+    \end{align*}
+
+    For geometric brownian motion: $f = \mu X(t)$ and $g = \sigma X(t)$ - where $X(t)$ is geometric Brownian motion (from Homework 7). \\
+
+    To make things easier:
+
+    \begin{align*}
+        \frac{\partial F}{\partial t} &= 2(1+t) \cos(X) \\
+        \frac{\partial F}{\partial X} &= -(1+t)^2 \sin(X) \\
+        \frac{\partial^2 F}{\partial X^2} &= -(1+t)^2 \cos(X)\\ 
+    \end{align*}
+
+    Also:
+    \begin{align*}
+        \cos(X) &= \frac{F(X,t)}{(1+t)^2} \\
+        \sin^2(X) &= 1 - \frac{F(X,t)^2}{(1+t)^4} \\
+        \sin(X) &= \frac{\sqrt{(1+t)^4 - F(X,t)^2} }{(1+t)^2}\\
+    \end{align*}
+
+    Substituting values:
+    \begin{equation*}
+        \begin{aligned}
+        dF &= \left[ 2(1+t) \cos(X) -(1+t)^2 \sin(X) f - \frac{(1+t)^2}{2} \cos(X) g^2 \right]dt - \left[g(1+t)^2 \sin(X)\right] dW \\
+    %
+               &= \left[ 2 \frac{(1+t)^2}{(1+t)} \cos(X) - (1+t)^2 \sin(X) f - \frac{F}{2} g^2 \right]dt - \left[g(1+t)^2 \sin(X) \right] dW \\
+    %
+            &= \left[ \frac{2F}{1+t} - (1+t)^2 \sin(X) \mu X - \frac{F}{2} (\sigma X)^2 \right]dt - \left[\sigma X (1+t)^2 \sin(X) \right] dW \\
+    %
+            &= \left[ \frac{2F}{1+t} - \mu (1+t)^2 \frac{\sqrt{(1+t)^4 - F(X,t)^2} }{(1+t)^2} \cos^{-1} \left(\frac{F(X,t)}{(1+t)^2}\right) - \frac{F}{2} \left(\sigma \cos^{-1}\left( \frac{F(X,t)}{(1+t)^2} \right)\right)^2 \right]dt\\
+            &- \left[\sigma \cos^{-1}\left(\frac{F(X,t)}{(1+t)^2}\right) (1+t)^2 \frac{\sqrt{(1+t)^4 - F(X,t)^2}}{(1+t)^2} \right] dW \\
+            &= \left[ \frac{2F}{1+t} - \mu \sqrt{(1+t)^4 - F(X,t)^2} \cos^{-1} \left(\frac{F(X,t)}{(1+t)^2}\right) - \frac{F}{2} \left(\sigma \cos^{-1}\left( \frac{F(X,t)}{(1+t)^2} \right)\right)^2 \right]dt \\
+            &- \left[\sigma \cos^{-1}\left(\frac{F(X,t)}{(1+t)^2}\right) \sqrt{(1+t)^4 - F(X,t)^2} \right] dW \\
+        \end{aligned}
+    \end{equation*}
+    \clearpage
+
+\end{document}

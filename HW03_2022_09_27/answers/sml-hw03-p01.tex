@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr, amsmath, amssymb}
+\usepackage[margin=1in]{geometry}
+
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut	
+
+\rhead{Stochastic Methods Lab \\ Name: Ayam Banjade}
+\lhead{Jacobs University Bremen \\
+	Submitted to: Sören Petrat}
+
+\begin{document}
+	\begin{center}
+        \Tstrut \Large{\texttt{Homework 3 Problem 1}} \Bstrut \vspace*{0.8mm}  
+	\end{center}
+    We know,
+    \begin{align}
+        FV_m &= P (1 + y)^m \label{eq:1}\\
+        P &= \frac{F}{(1+y)^n} + \sum_{i=1}^{n} \frac{C}{(1+y)^i}\label{eq:2} \\
+        MD &= \frac{1}{P} \left( \frac{nF}{(1+y)^n}+ \sum_{i=1}^{n} \frac{iC}{(1+y)^i}\right)\label{eq:3}
+    \end{align}
+    where $P$ is the price of the bond, $m$ is the horizon (equal to $D$ below), $y$ is the interest rate, $C$ is coupon payment, $n$ is time to maturity, and $F$ is the par value. \\
+    For two bonds we know that:
+    \begin{align}
+        FV &= FV_1 + FV_2 \nonumber \\
+           &= P_1 (1+y)^D + P_2 (1+y)^D \label{eq:4}
+    \end{align}
+    Plugging \eqref{eq:2} into \eqref{eq:4}:
+    \begin{align*}
+        FV &= \left(\frac{F_1}{(1+y)^n} + \sum_{i=1}^{n} \frac{C_1}{(1+y)^i}\right) (1+y)^D + \left(\frac{F_2}{(1+y)^n} + \sum_{i=1}^{n} \frac{C_2}{(1+y)^i}\right) (1+y)^D \\
+           &= F_1(1+y)^{D-n_1} + \sum_{i=1}^{n_1} C_1(1+y)^{D-i} + F_2(1+y)^{D-n_2} + \sum_{i=1}^{n_2} C_2(1+y)^{D-i}
+    \end{align*}
+
+    The conditions for immunization according to the book are:
+    \begin{enumerate}
+        \item $FV = L$ at horizon $m$
+        \item $\frac{\partial FV}{\partial y} = 0$
+        \item $FV$ convex around $y$
+    \end{enumerate}
+    At the horizon:
+    \begin{align}
+        \frac{\partial FV}{\partial y} &= \frac{\partial FV_1}{\partial y} + \frac{\partial FV_2}{\partial y} = 0 \nonumber\\[10pt]
+        &\implies (D-n_1)F_1(1+y)^{D-n_1-1} + \sum_{i=1}^{n_1}(D-i)C_1(1+y)^{D-i-1}\nonumber \\
+        &+ (D-n_2)F_2(1+y)^{D-n_2-1} + \sum_{i=1}^{n_2}(D-i)C_2(1+y)^{D-i-1} = 0\nonumber\\[10pt]
+        &\implies \frac{DF_1 - n_1F_1}{(1+y)^{n_1}} + \sum_{i=1}^{n_1} \frac{DC_1 - iC_1}{(1+y)^i} \nonumber\\ 
+        &+ \frac{DF_2 - n_2F_2}{(1+y)^{n_2}} + \sum_{i=1}^{n_2} \frac{DC_2 - iC_2}{(1+y)^i} = 0 \nonumber\\[10pt]
+        &\implies -\left( \frac{n_1F_1}{(1+y)^{n_1}} + \sum_{i=1}^{n_1} \frac{iC_1}{(1+y)^i} \right) + D \left( \frac{n_1F_1}{(1+y)^{n_1}} + \sum_{i=1}^{n_1} \frac{iC_1}{(1+y)^i} \right) \nonumber\\
+        &- \left( \frac{n_2F_2}{(1+y)^{n_2}} + \sum_{i=1}^{n_2} \frac{iC_2}{(1+y)^i} \right) + D \left( \frac{n_2F_2}{(1+y)^{n_2}} + \sum_{i=1}^{n_2} \frac{iC_2}{(1+y)^i} \right) = 0 \label{eq:5}
+    \end{align}
+    From \eqref{eq:2} and \eqref{eq:3}:
+    \[
+        MD \cdot P =\left( \frac{nF}{(1+y)^n}+ \sum_{i=1}^{n} \frac{iC}{(1+y)^i}\right) 
+    \]
+    Plugging into \eqref{eq:5} and also using \eqref{eq:2}
+    \begin{align*}
+        & -D_1P_1 + DP_1 - D_2P_2 + DP_2 = 0 \\
+        &\implies D_1P_1 + D_2P_2 = D(P_1 + P_2) \\
+        &\implies \frac{P_1}{P_1+P_2} D_1 + \frac{P_2}{P_1+P_2}D_2 = D
+    \end{align*}
+    Also we know that,
+    \begin{align*}
+        & \frac{P_1+P_2}{P_1+P_2} = 1\\
+        & \frac{P_1}{P_1+P_2} + \frac{P_2}{P_1+P_2} = 1
+    \end{align*}
+    Let $\omega_1 = \frac{P_1}{P_1 + P_2}$ and $\omega_2 = \frac{P_2}{P_1+P_2}$. Thus: \\
+    \begin{align*}
+        \omega_1 D_1 + \omega_2 D_2 = D \\
+        \omega_1 + \omega_2 = 1
+    \end{align*}
+    
+    \clearpage
+
+\end{document}
